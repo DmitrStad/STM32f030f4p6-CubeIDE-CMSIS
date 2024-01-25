@@ -16,22 +16,7 @@
  ******************************************************************************
  */
 
-#include "stm32f0xx.h"
-#include "stm32f030x6.h"
-#include "system_stm32f0xx.h"
-#include "stdbool.h"
-#include "string.h"
-#include "stdio.h"
-
-#define TX_BUFF_SIZE	100
-
-void ExecuteCommand(void);
-
-
-char TxBuffer[TX_BUFF_SIZE];					//Буфер передачи USART
-bool ComReceived;								//Флаг приёма строки данных
-char Rx;										//Входные данные
-
+#include "main.h"									
 
 void USART1_IRQHandler(void)
 {
