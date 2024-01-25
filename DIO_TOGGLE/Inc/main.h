@@ -15,25 +15,21 @@
 #include "string.h"
 #include "stdio.h"
 
-#define USE_DMA
+#define TX_BUFF_SIZE	100
 
-/* Размеры буферов приёма и передачи */
-#define	RX_BUFF_SIZE	256
-#define TX_BUFF_SIZE	256
+char TxBuffer[TX_BUFF_SIZE];					//Буфер передачи USART
+bool ComReceived;								//Флаг приёма строки данных
+char Rx;										//Входные данные
 
+void USART1_IRQHandler(void);
+void TIM3_IRQHandler(void);
+void Init_GPIO(void);
+void initTIM3(void);
+void initUSART1(void);
+void initDMA(void);
+void TransmitWithDMA(char *str);
 void ExecuteCommand(void);
 
-#define DELAY_VALUE 1000
-
-void delay(volatile uint32_t time);
-
-#define LED1_ON() GPIOA->ODR |= (1 << 9); // Включаем диод
-#define LED1_OFF() GPIOA->ODR &= ~(1 << 9); //Выключаеи диод
-#define LED1_TOGGLE GPIOA->ODR ^= GPIO_ODR_9; //Меняем состояние диода на противоположное
-
-#define LED2_ON() GPIOA->BSRR =GPIO_BSRR_BS_10; //Включаем диод
-#define LED2_OFF() GPIOA->BSRR =GPIO_BSRR_BR_10; //Выключаеи диод
-#define LED2_TOGGLE GPIOA->ODR ^= GPIO_ODR_10; //Меняем состояние диода на противоположное
 
 #endif /* MAIN_H_ */
 
