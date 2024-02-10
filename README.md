@@ -1,3 +1,2 @@
 # STM32f030f4p6-CubeIDE-CMSIS
-Pin shift control from UART, using DMA, Timer.
-A direct appeal to the Bits of the microcontroller registers was used. 
+ Управление  выводами с помощбю UART, с использованием DMA, Таймера. Использовалось прямое обращение к Битам регистров микроконтроллера.
